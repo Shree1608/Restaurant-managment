@@ -58,6 +58,9 @@ module.exports.policies = {
     Remove_from_fav:'isUser',
     List_myFav:'isUser',
     Search_myfav:'isUser'
+  },
+  TablebookingController :{
+    Book_Table : 'isUser'
   }
 
 

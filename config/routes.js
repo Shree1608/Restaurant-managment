@@ -13,6 +13,7 @@ const CategoryController = require("../api/controllers/CategoryController");
 const FavouriteController = require("../api/controllers/FavouriteController");
 const FoodController = require("../api/controllers/FoodController");
 const OrderController = require("../api/controllers/OrderController");
+const TablebookingController = require("../api/controllers/TablebookingController");
 
 
 
@@ -53,4 +54,6 @@ module.exports.routes = {
     'DELETE /fav/remove/:id' :'FavouriteController.Remove_from_fav',
     'GET /fav/list' :  'FavouriteController.List_myFav',
     'GET /fav/:foodName' :'FavouriteController.Search_myfav',
+
+    'POST /booking' : 'TablebookingController.Book_Table',
 };

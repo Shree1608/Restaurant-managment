@@ -5,13 +5,11 @@
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
  */
 
+const moment = require('moment');
 module.exports = {
 
   attributes: {
-    time :{
-    type:'number',
-    required : true,
-    },
+    
      guest :{
       type :'number',
       min:2,
@@ -20,9 +18,21 @@ module.exports = {
      },
      order_status :{
       type :'string',
-      isIn :['pending','cancelled'],
-      defaultTo :'pending'
+      isIn :['pending','cancelled','confirm'],
+      defaultsTo :'pending'
      },
+     bookingDate:{
+      type:'ref',
+      columnType:'date',
+      required :true
+     }
+    //  date:{
+    //   type :'string',
+    //   required :true
+    //  },time :{
+    //   type:'string' ,
+    //   required : true
+    //  }
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
@@ -38,25 +48,19 @@ module.exports = {
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
 
   },
-  CheckDate: async function(attribute){
-    let newDate = Date.parse(attribute)
-    let currentDate = new Date().getTime()
-    let mesg
-    if(isNaN(newDate)){
-     return mesg= 'date is invalid'
-    }else{
-      if(newDate < currentDate){
-       mesg = 'date should not be past date'
-      }else{
-        mesg = 'date is correct'
-      }
-    }
-    let data = {
-      date : newDate,
-      mesg : mesg
-    }
-    return data
-  },
+
+
+  // bookingDateAndTime :  function(date ,time){
+  //   const todayDate = new Date().getTime()
+  //   const bookingDate = moment().parseZone(date,time) 
+  //   let msg 
+  //   if(bookingDate < todayDate){
+  //     return msg ='date should not be past date'
+  //   }else{
+  //     return msq = 'date and time is current'
+  //   }
+  // }
+  
 
 
 };
