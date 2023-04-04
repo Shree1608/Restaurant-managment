@@ -55,8 +55,10 @@ module.exports.routes = {
     'GET /fav/list' :  'FavouriteController.List_myFav',
     'GET /fav/:foodName' :'FavouriteController.Search_myfav',
 
+//Table Booking Contoller
     'POST /booking' : 'TablebookingController.Book_Table',
     'PATCH /cancle' : 'TablebookingController.Cancle' ,
     'GET /list' : 'TablebookingController.listbooking',
-    'GET /listone/:id' : 'TablebookingController.listOne'
+    'GET /listone/:id' : 'TablebookingController.listOne',
+    'PATCH /confirm' : 'TablebookingController.confirmBooking'
 };

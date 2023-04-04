@@ -81,6 +81,17 @@ module.exports = {
     }
   
   },
+  confirmBooking : async(req,res)=>{
+      const {id} = req.body
+      const booking = await Tablebooking.findOne({id:id ,order_status:'cancelled'})
+      if(booking){
+        res.status(404).json({message :'this booking is canclled'})
+      }else{
+        const confirmBooking = await Tablebooking.updateOne({id:id,order_status :'pending'}).set({order_status:'confirm'})
+        res.status(200).json({message : 'order confirm' , Booking :confirmBooking})
+      }
+     
+  },
 
   listbooking : async (req,res)=>{
     const user = req.userData.UorAid

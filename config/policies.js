@@ -53,7 +53,8 @@ module.exports.policies = {
     Book_Table : 'isUser',
     Cancle: 'isUser' ,
     listbooking :'isUser',
-    listOne :'isUser'
+    listOne :'isUser',
+    confirmBooking :'isAdmin'
   }
 
 
