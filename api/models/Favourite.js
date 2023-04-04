@@ -19,6 +19,9 @@ module.exports = {
       columnType : 'FLOAT',
       required : true
     },
+    date :{
+      type :'ref',
+    },
     deletedAt : {
       type:'string',
       defaultsTo : 'not deleted'
@@ -45,17 +48,27 @@ module.exports = {
   },
   CheckDate: async function(attribute){
     let newDate = Date.parse(attribute)
-    let currentDate = new Date().getTime()
+    let currentDate = Date.parse(new Date().toLocaleDateString())
     let mesg
     if(isNaN(newDate)){
      return mesg= 'date is invalid'
-    }else{
-      if(newDate > currentDate){
-       mesg = 'date should not be future date'
-      }else{
-        mesg = 'date is correct'
-      }
     }
+      if(newDate == currentDate){
+        mesg = 'date is correct'
+    }else{
+    mesg = 'this date is not todays date'
+    
+    }
+    // if(newDate < currentDate){
+    //    mesg = 'date should not be future date or past date'
+    // }
+    // if( newDate > currentDate){
+    //   mesg = 'date should not be future date or past date'
+    // }
+    
+        
+      
+    
     let data = {
       date : newDate,
       mesg : mesg

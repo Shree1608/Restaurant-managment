@@ -9,6 +9,8 @@ const uuid = require('uuid-random');
 module.exports = {
   AddFood : async(req,res)=>{
     const id = uuid()
+    const user = req.userData.UorAid
+    const findUser = await User.findOne({id:user})
     const {category , foodName , price} = req.body
     const findFood = await Food.findOne({foodName:foodName})
     if(findFood){
@@ -16,6 +18,7 @@ module.exports = {
     }else{
         const addFood = await Food.create({
             id :id ,
+            admin_user:findUser.name,
             category:category,
             foodName : foodName,
             price :price
@@ -58,9 +61,11 @@ module.exports = {
   },
   ListFoodByCatId : async(req,res)=>{
     const {id} = req.params
+    
     const category = await Category.find(id,{isDeleted:false}).populate('food')
     res.status(200).json({
      categoryId :id,
+     
      total:category[0].food.length,
      food:category[0].food})
 }

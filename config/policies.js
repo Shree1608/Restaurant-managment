@@ -21,35 +21,25 @@ module.exports.policies = {
 
   UserController:{
     logout : 'tokenverify',
+   
   },
   CategoryController : {
     AddCategory : 'isAdmin',
     EditCategory :'isAdmin',
-    DeleteCategory :'isAdmin',
-    ListCategory :'isAdmin',
-    ListCategory :'isUser',
-
-    
+    DeleteCategory :'isAdmin',  
   },
   FoodController : {
     AddFood :'isAdmin',
     EditFood :'isAdmin',
     DeleteFood : 'isAdmin',
-    ListFoodByCatId :'isAdmin',
-    ListFoodByCatId : 'isUser'
   },
   CartproductController : {
-    // AddToCart :'isAdmin',
     AddToCart :'isUser',
-    // Editquantity :'isAdmin',
     Editquantity:'isUser',
-    // DeleteCart:'isAdmin',
     DeleteCart:'isUser',
-    // ListCart:'isAdmin',
     ListCart:'isUser'
   },
   OrderController :{
-    // Do_Order :'isAdmin',
     Do_Order:'isUser',
     delete_order :'isUser'
   },
@@ -60,7 +50,10 @@ module.exports.policies = {
     Search_myfav:'isUser'
   },
   TablebookingController :{
-    Book_Table : 'isUser'
+    Book_Table : 'isUser',
+    Cancle: 'isUser' ,
+    listbooking :'isUser',
+    listOne :'isUser'
   }
 
 

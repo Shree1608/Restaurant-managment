@@ -6,12 +6,11 @@ module.exports= async(req ,res,next)=>{
   try{
     const token = req.headers.authorization.split(" ")[1];
     const decoded = jwt.verify(token , process.env.JWT_KEY)
-    const user = await User.findOne({roles : roles.Admin})
+    const user = await User.findOne({id : decoded.UorAid,roles : roles.Admin})
          if(token == user.token ){
             req.userData = decoded; 
             return next();
         }else{
-            
                 res.status(500).json({message :'auth fail'})
             }
   }catch(error){

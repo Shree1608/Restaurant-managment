@@ -33,6 +33,10 @@ module.exports = {
                 message : 'Added Successfully.',
                 Favourites : addTofav
             })       
+        }else{
+          if(newDate.mesg == 'this date is not todays date'){
+            res.status(400).json({message : 'this date is not todays date'})
+          }
         }
     }
   },

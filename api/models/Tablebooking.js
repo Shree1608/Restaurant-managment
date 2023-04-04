@@ -9,7 +9,9 @@ const moment = require('moment');
 module.exports = {
 
   attributes: {
-    
+    user:{
+    type:'string'
+    },
      guest :{
       type :'number',
       min:2,
@@ -23,8 +25,9 @@ module.exports = {
      },
      bookingDate:{
       type:'ref',
-      columnType:'date',
-      required :true
+      
+      // columnType:'date',
+      
      }
     //  date:{
     //   type :'string',

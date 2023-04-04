@@ -67,12 +67,10 @@ module.exports = {
   },
 
   ListCategory : async(req,res)=>{ 
-       const Admin = req.userData.UorAid
-       const findAdmin = await User.findOne({id:Admin})
        const categories = await Category.find({isDeleted:false})
        res.status(200).json({
         categories:categories,
-        AdminName : findAdmin.name          
+               
     }) 
   }
  

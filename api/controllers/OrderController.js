@@ -36,9 +36,10 @@ module.exports = {
         const totalpriceofCart = await Cartproduct.sum('total',{where:{isDeleted:false}})
         res.status(200).json({
             message :'Continiue',
+            total_products : findOrder.length,
             totalamount :totalpriceofCart,
-            Order_is :DoOrder ,
-            Products : findOrder
+            Billing_Details :DoOrder ,
+            Products : findOrder,
         })
         
         
